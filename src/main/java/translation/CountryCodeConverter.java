@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This class provides the service of converting country codes to their names and back.
@@ -41,8 +38,8 @@ public class CountryCodeConverter {
             while (iterator.hasNext()) {
                 String line = iterator.next();
                 String[] parts = line.split("\t");
-                countryCodeToCountry.put(parts[2], parts[0]);
-                countryToCountryCode.put(parts[0], parts[2]);
+                countryCodeToCountry.put(parts[2].toLowerCase(), parts[0]);
+                countryToCountryCode.put(parts[0], parts[2].toLowerCase());
             }
         }
         catch (IOException | URISyntaxException ex) {
